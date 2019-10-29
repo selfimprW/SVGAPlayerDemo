@@ -1,3 +1,3 @@
 # SVGAPlayerDemo
 
-![image](./document/image1.jpg)
+![image](../document/image1.jpg)
