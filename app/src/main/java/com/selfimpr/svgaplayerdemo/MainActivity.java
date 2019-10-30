@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String url = "https://yjmf.bs2dl.yy.com/Yjk3YTdlNDEtNzFhZC00ZTljLWE1NTAtMTA1OGZhYmM5ZTU2.svga";
+        url = "https://yjmf.bs2dl.yy.com/MjQ0ZWQzODYtMTJjNC00ZDU4LTlkOTgtZmVkMWI2NzRjMjNh.svga";
+
         loadAnimation();
     }
 
