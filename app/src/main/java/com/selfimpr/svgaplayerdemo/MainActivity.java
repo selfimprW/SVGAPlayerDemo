@@ -18,6 +18,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * https://github.com/svga/SVGA-Samples
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static List<String> SVGAUrls;
