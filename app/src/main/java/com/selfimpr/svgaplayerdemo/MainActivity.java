@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SVGAImageView mSVGAImageView;
     private SVGAParser mSVGAParser;
+    private ZoomView mZoomView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,15 @@ public class MainActivity extends AppCompatActivity {
 //        loadAnimationFromAssets();
 
         loadAnimationFromNet(SVGAUrls.get(0));
+
+        mZoomView = findViewById(R.id.zoom_view);
+//        mZoomView.setOnTouchListener(new DragTouchListener());
+        mZoomView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "text", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /**
@@ -113,6 +123,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void next(View view) {
         mClickCount++;
+        mZoomView.setEditable(!mZoomView.isEditable());
+
+        String toast = "width = " + mZoomView.getWidth() + ",height = " + mZoomView.getHeight()
+                + " , left = " + mZoomView.getLeft() + ", right =" + mZoomView.getRight();
+        Toast.makeText(view.getContext(), toast, Toast.LENGTH_SHORT).show();
+
         loadAnimationFromNet(SVGAUrls.get(mClickCount % (SVGAUrls.size() - 1)));
     }
 }
