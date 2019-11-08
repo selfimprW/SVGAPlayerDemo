@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.opensource.svgaplayer.SVGADrawable;
@@ -43,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
     private SVGAImageView mSVGAImageView;
     private SVGAParser mSVGAParser;
-    private ZoomView mZoomView;
+    private View mImageView;
+    private ViewGroup mParentView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,18 +54,14 @@ public class MainActivity extends AppCompatActivity {
         mSVGAImageView = findViewById(R.id.svga);
         mSVGAParser = new SVGAParser(this);
 
+        mParentView = findViewById(R.id.parent);
+
+        mImageView = findViewById(R.id.image);
+
 //        loadAnimationFromAssets();
 
         loadAnimationFromNet(SVGAUrls.get(0));
 
-        mZoomView = findViewById(R.id.zoom_view);
-//        mZoomView.setOnTouchListener(new DragTouchListener());
-        mZoomView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "text", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     /**
@@ -123,12 +121,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void next(View view) {
         mClickCount++;
-        mZoomView.setEditable(!mZoomView.isEditable());
-
-        String toast = "width = " + mZoomView.getWidth() + ",height = " + mZoomView.getHeight()
-                + " , left = " + mZoomView.getLeft() + ", right =" + mZoomView.getRight();
-        Toast.makeText(view.getContext(), toast, Toast.LENGTH_SHORT).show();
-
         loadAnimationFromNet(SVGAUrls.get(mClickCount % (SVGAUrls.size() - 1)));
+
+        if (mClickCount % 2 == 0) {
+            mSVGAImageView.bringToFront();
+        } else {
+            mImageView.bringToFront();
+        }
+
+        Toast.makeText(this, String.valueOf(mParentView.indexOfChild(mImageView)), Toast.LENGTH_SHORT).show();
     }
 }
