@@ -61,14 +61,13 @@ public class MainActivity extends AppCompatActivity {
         loadAnimationFromAssets();
 
 //        loadAnimationFromNet(SVGAUrls.get(0));
-
     }
 
     /**
      * http://svga.io/intro.html
      */
     private void loadAnimationFromAssets() {
-        mSVGAParser.decodeFromAssets("zhuan_auction_success.svga", new SVGAParser.ParseCompletion() {
+        mSVGAParser.decodeFromAssets("bid.svga", new SVGAParser.ParseCompletion() {
             @Override
             public void onComplete(SVGAVideoEntity mSVGAVideoEntity) {
                 mSVGAImageView.setVisibility(View.VISIBLE);
