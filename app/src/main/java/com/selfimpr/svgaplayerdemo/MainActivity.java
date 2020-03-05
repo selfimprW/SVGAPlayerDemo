@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
      * http://svga.io/intro.html
      */
     private void loadAnimationFromAssets() {
-        mSVGAParser.decodeFromAssets("vf_pk_start.svga", new SVGAParser.ParseCompletion() {
+        mSVGAParser.decodeFromAssets("linkpk_task_doing.svga", new SVGAParser.ParseCompletion() {
             @Override
             public void onComplete(SVGAVideoEntity mSVGAVideoEntity) {
                 mSVGAImageView.setVisibility(View.VISIBLE);
